@@ -1,38 +1,57 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema(
-{
+
+const userSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:[true , "name is required"],
+        trim : true
     },
-
-    email:{
+    email :{
+        type:String,
+        required:[true , "email is required"],
+        unique : true,
+        lowercase : true,
+        trim :true
+    },
+    password :{
         type:String,
         required:true,
-        unique:true
-    },
+        minLength:[8 , "Password must be at least 8 characters long"],
 
-    password:{
+    },
+    phone:{
         type:String,
-        required:true
+        required:[true , "Phone is required"],
+        trim : true
     },
-
-    role:{
+    role :{
         type:String,
-        enum:["user","admin","theaterOwner"],
-        default:"user"
+        enum:["user", "admin" , "owner"],
+        default:"user",
     },
+    status:{
+        type:String,
+        enum:["active" , "inactive"],
+        default:"active",
+    },
+    favorites:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Movie"
+        },
+    ],
+    bookingHistory:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Booking"
+        },
 
-    watchlist: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Movie"
-      }
-    ]
+    ],
 
-},
-{
-    timestamps:true
-});
+}, 
+    {timestamps:true}
 
-module.exports = mongoose.model("User", userSchema);
+ )
+;
+
+module.exports=mongoose.model("User",userSchema)
