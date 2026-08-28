@@ -1,50 +1,55 @@
-import mongoose, { model } from "mongoose";
+import mongoose from "mongoose";
 
-const bookingSchema=new mongoose.Schema({
+const bookingSchema= new mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        required:true
+        required:true,
+        ref:"User"
     },
-    showId:{
+    movieId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"show",
+        required:true,
+        ref:"movies",
+    },
+    theaterId:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'theater'
+    },
+    showtimeId:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:"showtime"
+    },
+    selectedSeats:{
+        type:[String], //to easily handel multiple seats
         required:true
     },
-    seats:[String],
-
-    snacks:[{
-        name:String,
-        price:Number,
-        quantity:Number
-}],
-
-    parking:{
-        type:String,
-        price:Number,
-        theater:String
+    bookingDate:{
+        type:Date,
+        required:true,
+        default : Date.now
     },
-    totalPrice:{
+    bookingStatus:{
+        type:String,
+        enum:["pending" , "confirmed" ,"cancelled"],
+        default:"pending",
+        required:true,
+
+    },
+    amount:{
         type:Number,
-        default:0,
-
+        required:true
     },
-    paymentStatus:{
+    paymentId:{
         type:String,
-        enum:["Success",
-            "Failed",
-            "Pending"
-        ],
-        default:"Success"
-    },
-    status:{
-        type:String,
-        enum:["VALID","USED","COMPLETED"],
-        default:"VALID",
-    },
+        required:true
+    }
+    //payment model
 
 },
-{timestamps:true});
+    {timestamps:true},
+);
 
-module.exports=mongoose.model("Booking",bookingSchema)
+module.exports=mongoose.model('Booking',bookingSchema)
 
