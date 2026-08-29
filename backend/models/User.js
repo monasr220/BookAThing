@@ -39,7 +39,11 @@ const userSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:"Movie"
         },
-    ],
+  ],
+  tokenVersion: {
+    type: Number,
+    default:0
+  },
     bookingHistory:[
         {
             type:mongoose.Schema.Types.ObjectId,
