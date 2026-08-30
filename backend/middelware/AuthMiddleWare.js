@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const Theater = require('../models/theater');
 
+// 1. التوثيق والتحقق من التوكن وجلب بيانات المستخدم والسينما
 exports.authenticateJWT = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
@@ -31,7 +32,7 @@ exports.authenticateJWT = async (req, res, next) => {
             const theater = await Theater.findOne({ user_id: user._id }).select('_id').lean();
             if (!theater) {
                 return res.status(403).json({ 
-                    message: 'Theater admin account is not properly configured. Please contact support.' 
+                    message: 'Theater admin account is not properly configured.' 
                 });
             }
             req.user.theater_id = theater._id;
@@ -51,6 +52,24 @@ exports.authenticateJWT = async (req, res, next) => {
     }
 };
 
+// 2. التحقق الديناميكي من الأدوار (يغني عن authorizeAdmin المنفصلة)
+exports.authorizeRoles = (...allowedRoles) => {
+    return (req, res, next) => {
+        if (!req.user?.role) {
+            return res.status(401).json({ message: 'Unauthorized: Authentication required.' });
+        }
+
+        if (!allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({
+                message: `Forbidden: Role '${req.user.role}' is not authorized for this resource.`
+            });
+        }
+
+        next();
+    };
+};
+
+// 3. التحقق الخاص بملكية مدير السينما لسينما معينة
 exports.authorizeTheatreAdmin = async (req, res, next) => {
     if (!req.user?.role) {
         return res.status(401).json({ message: 'Unauthorized: Authentication required.' });
@@ -82,32 +101,4 @@ exports.authorizeTheatreAdmin = async (req, res, next) => {
     } catch (error) {
         return res.status(500).json({ message: 'Internal server error during authorization check.' });
     }
-};
-
-exports.authorizeAdmin = (req, res, next) => {
-    if (!req.user?.role) {
-        return res.status(401).json({ message: 'Unauthorized: Authentication required.' });
-    }
-
-    if (req.user.role !== 'admin') {
-        return res.status(403).json({ message: 'Forbidden: Admin role required.' });
-    }
-
-    next();
-};
-
-exports.authorizeRoles = (...allowedRoles) => {
-    return (req, res, next) => {
-        if (!req.user?.role) {
-            return res.status(401).json({ message: 'Unauthorized: Authentication required.' });
-        }
-
-        if (!allowedRoles.includes(req.user.role)) {
-            return res.status(403).json({
-                message: `Forbidden: Role '${req.user.role}' is not authorized for this resource.`
-            });
-        }
-
-        next();
-    };
 };
