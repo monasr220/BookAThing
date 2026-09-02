@@ -1,6 +1,6 @@
-import Offer from '../models/Offer';
+const Offer = require('../models/Offer');
 
-export function computeDiscountAmount(subTotal, discountType, discountValue) {
+function computeDiscountAmount(subTotal, discountType, discountValue) {
   let discount = 0;
 
   if (discountType === 'percentage') {
@@ -13,14 +13,14 @@ export function computeDiscountAmount(subTotal, discountType, discountValue) {
   return Math.round(discount * 100) / 100;
 }
 
-export function isWithValidity(offer) {
+function isWithValidity(offer) {
   const now = new Date();
   if (offer.startAt && now < new Date(offer.startAt)) return false;
   if (offer.endAt && now > new Date(offer.endAt)) return false;
   return true;
 }
 
-export async function evaluateBestOffer(cart, promoCode) {
+async function evaluateBestOffer(cart, promoCode) {
   const { numTickets = 0, subTotal = 0, movieId, isFirstBooking = false } = cart || {};
 
   if (!Number.isFinite(subTotal) || subTotal <= 0) {
@@ -63,7 +63,6 @@ export async function evaluateBestOffer(cart, promoCode) {
     }
   }
 
-  // إرجاع النتيجة بعد انتهاء الحلقة التكرارية بالكامل
   if (candidates.length === 0) {
     return { applied: null, discount: 0, finalTotal: subTotal };
   }
@@ -85,3 +84,9 @@ export async function evaluateBestOffer(cart, promoCode) {
     finalTotal,
   };
 }
+
+module.exports = {
+  computeDiscountAmount,
+  isWithValidity,
+  evaluateBestOffer
+};
