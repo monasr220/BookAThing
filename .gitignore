@@ -7,7 +7,7 @@ node_modules/
 !.env.example
 
 # Logs (ملفات السجلات والخطأ)
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -16,8 +16,31 @@ yarn-error.log*
 # Uploads / Static files (ملفات الصور أو المرفقات المرفوعة أثناء التطوير)
 uploads/
 
+# Archives / Backups (أرشيفات ونسخ احتياطية - ملهاش مكان في الريبو)
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+
+# Test coverage (تقارير تغطية الاختبارات)
+coverage/
+.nyc_output/
+
+# Build output (لو حصل build مستقبلاً)
+dist/
+build/
+
+# Process files
+*.pid
+*.seed
+*.pid.lock
+
 # OS & Editor Files (ملفات بيئة العمل والنظام)
 .DS_Store
 Thumbs.db
+ehthumbs.db
 .vscode/
 .idea/
+*.swp
+*.swo
