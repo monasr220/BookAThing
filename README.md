@@ -223,6 +223,4 @@ bash test-api.sh
 
 <div align="center">
 
-صُنع كمشروع تخرج 🎓
-
 </div>
