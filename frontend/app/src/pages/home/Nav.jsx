@@ -86,13 +86,9 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <span
-                    className="nav-link"
-                    title="Coming soon"
-                    style={{ opacity: 0.6, cursor: "not-allowed" }}
-                  >
+                  <Link className="nav-link" to="/my-bookings">
                     My Bookings
-                  </span>
+                  </Link>
                 </li>
               </ul>
             </div>

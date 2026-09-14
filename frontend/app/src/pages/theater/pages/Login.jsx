@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import '../theater.css'
 
 function Login() {
   const { login, loading, error } = useAuth()

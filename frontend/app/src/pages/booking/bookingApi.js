@@ -29,14 +29,20 @@ export async function createBooking({ movieId, theaterId, showtimeId, seats, pro
     return response.data; // { message, booking, subTotal, discount, appliedOffer }
 }
 
+// GET /api/bookings/my-bookings
+export async function getUserBookings() {
+    const response = await api.get('/bookings/my-bookings');
+    return unwrap(response); // array of bookings with populated movie, theater, showtime, offer
+}
+
+// DELETE /api/bookings/:bookingId
+export async function cancelBooking(bookingId) {
+    const response = await api.delete(`/bookings/${bookingId}`);
+    return unwrap(response); // cancelled booking data
+}
+
 // POST /api/payments
 export async function processPayment({ bookingId, amount, paymentMethod, currency = 'EGP' }) {
     const response = await api.post('/payments', { bookingId, amount, paymentMethod, currency });
-    return unwrap(response); // { id, bookingId, amount, currency, status, paymentMethod, transactionRef, createdAt }
-}
-
-// GET /api/payments/booking/:bookingId — used by the Receipt page
-export async function getPaymentByBooking(bookingId) {
-    const response = await api.get(`/payments/booking/${bookingId}`);
     return unwrap(response); // { id, bookingId, amount, currency, status, paymentMethod, transactionRef, createdAt }
 }
