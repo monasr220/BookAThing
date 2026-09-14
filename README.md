@@ -7,27 +7,40 @@
 **Focus:** Frontend only - Cinema booking flow & My Bookings page
 **Status:** Clean & Ready for Review
 
-This branch is part of the main project monasr220/BookAThing - responsible for the complete user journey from selecting a movie to viewing booked tickets.
-
 ### ✨ Features
-
-| Feature | Description | Component |
-| :--- | :--- | :--- |
-| 📅 Day Selection | Choose movie date with availability | DaySelector.jsx |
-| ⏰ Time Selection | Choose showtime slots | TimeSelector.jsx |
-| 💺 Seat Selection | Interactive seat map | SeatSelector.jsx |
-| 👤 Customer Info | Form for user details | CustomerInfo.jsx |
-| 💳 Payment | Payment summary | Payment.jsx |
-| ✅ Confirmation | Booking confirmation | Confirmation.jsx |
-| 🎟️ My Bookings | List all user bookings | MyBookings.jsx |
+- 📅 Day Selection - DaySelector.jsx
+- ⏰ Time Selection - TimeSelector.jsx  
+- 💺 Seat Selection - SeatSelector.jsx
+- 👤 Customer Info - CustomerInfo.jsx
+- 💳 Payment - Payment.jsx
+- ✅ Confirmation - Confirmation.jsx
+- 🎟️ My Bookings - MyBookings.jsx
 
 ### 🚀 Tech Stack
-- Frontend: React 18, Vite, CSS3
-- State Management: React Hooks
-- Build Tool: Vite
+- React 18, Vite, CSS3
+- React Hooks
+- Vite Build Tool
 
 ### 📦 Installation & Run
+git clone -b cinema/my-bookings https://github.com/anaskilany011-cpu/BookAThing.git
+cd BookAThing/frontend
+npm install
+npm run dev
 
-1. Clone the branch:
+Server: http://localhost:5173
 
+### 📁 Project Structure
+frontend/src/components/
+  MyBookings.jsx
+  BookingFlow.jsx
+  DaySelector.jsx
+  TimeSelector.jsx
+  SeatSelector.jsx
+  CustomerInfo.jsx
+  Payment.jsx
 
+### 🔄 Flow
+Date -> Time -> Seats -> Info -> Payment -> Confirmation -> My Bookings
+
+### 👤 Author
+Anas Kilany - cinema/my-bookings
