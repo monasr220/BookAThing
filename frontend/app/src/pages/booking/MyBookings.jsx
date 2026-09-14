@@ -179,6 +179,12 @@ export default function MyBookings() {
                         )}
                         <button
                             className="btn btn-outline-light"
+                            onClick={() => navigate('/')}
+                        >
+                            Back to Home
+                        </button>
+                        <button
+                            className="btn btn-outline-light"
                             onClick={loadBookings}
                             disabled={loading}
                         >
