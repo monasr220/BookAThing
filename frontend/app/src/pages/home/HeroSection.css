@@ -1,0 +1,58 @@
+.heroSection {
+  background-image:
+    linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 0) 15%,
+      rgba(0, 0, 0, 0.8) 65%,
+      #000 100%
+    ),
+    url("/home/pexels-tima-miroshnichenko-7991489 (1).jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.btn1 {
+  color: #212529;
+  background-color: #dbb15b;
+}
+.btn1:hover {
+  color: #dbb15b;
+  border: 1px solid #dbb15b;
+}
+
+.btn2 {
+  color: #ffffffcf;
+  border: 0.1px solid #ffffff5f;
+}
+.btn2:hover {
+  color: #212529;
+
+  background-color: #dbb15b;
+}
+
+
+.head2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+} 
+
+@media (max-width : 576px) {
+.contentDiv {
+    padding-top: 9rem ;
+    padding-bottom: 3rem;
+    justify-content: center;
+}
+.head1 {
+    font-size: 1.5rem;
+}
+.head2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.btnsdiv1 {
+    flex-direction: column;
+}
+}

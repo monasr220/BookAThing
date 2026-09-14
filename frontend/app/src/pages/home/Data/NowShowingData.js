@@ -1,0 +1,73 @@
+export let NowShowingData = [
+  {
+    id: 1,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABV4B7ewN415TLsi-NYZWwsJCh1Va-34Qx3HnFlbp2h4aUEnmYgeo0Yq-3O8mRNl72QSEbBa-IG1Xpd8zImbdp_Rb-hnrp2YaosJ6.jpg?r=2e9",
+    title: "Shrek",
+    action: "Action , Adventure",
+    duration: "3h 10m",
+  },
+  {
+    id: 2,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQBBguMrqC7sz0KfnBFwIEfToXTeBb-malQ92c0l5ULzjICRV3JRmC9YtD0JS7Vp-gTb41AkwnXpbOijjvAnumrjIFt81c5p7_Dw.jpg?r=b6d",
+    title: "Sonic the Hedgehog 3",
+    action: "Action",
+    duration: "3h 53m",
+    since: "old"
+  },
+  {
+    id: 3,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABUTYS-nBpxP5oMDBIp5xSVBpUbGxeou7LI7CkS-txTdNWCNwSVxBvcFOlWKTmh4mTh5n2aF2QFq8CQsV4bRoWeMs_0Rma9t0029-Kk0DOWmpzTfeU1z_YQQTI4w2jChTWIJHBw.jpg?r=0c6",
+    title: "Swapped",
+    action: "Adventure , Romance",
+    duration: "1h 35m",
+  },
+  {
+    id: 4,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABYBkI3hLX7eqdVKWjqY1vGm83PvzqCfegtstCWwMdZk5RBDhk8RrTRI6mz0WNbobh4GEKQ9d5biQOd2X7mYW-F_vCRx-AFmi7qKlnK9VYJ3JqcY-SzWykBRPt2qG-3JtvhNds2xOxZjR1cIArYTpuWfKiUlzbyuSgRkblKILyoo.jpg?r=636",
+    title: "Despicable Me 4",
+    action: "Adventure , Action , Sci-Fi , Crime / Mystery",
+    duration: "2h",
+  },
+  {
+    id: 5,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABZEfHGgjAjXBzpcKQHR7TZD_Yj2l1HN7ZNNaoKh5mtEnM7d1cUN6JobuZ5k4StsNZoIe6b84wO-sr2FUF6Ij3fl3Izl5FHg1HB4fftqegnj0NOyH3xlOXK9JwmWfZo3Qqq_e2g.jpg?r=783",
+    title: "The Sea Beast",
+    action: "Adventure , Historical / Documentary , Romance",
+    duration: "1h 22m",
+  },
+  {
+    id: 6,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABfL8lBH99Naq-XF8FU--oSAH1A-vsrMJX7iCkCeZ2DezmnI50If6a0VPnbey88vIzlAX_tsBIZmchB7YuLQ8ZcaiLjZg_wSU3LU0.jpg?r=998",
+    title: "The Wild Robot",
+    action: "Animation , Adventure , Sci-fi , Thriller / Suspense",
+    duration: "2h 15m",
+  },
+  {
+    id: 7,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABRMUt3R8ly5bnxumAnPQelbhlTupVjw0-K5Jji68HQAVG2O8CGEv1UVndTiESIiHolhadcnjOetuaSA_r0j9CDA0iGyGYJ4Tii5J.jpg?r=35c",
+    title: "The Fast and the Furious",
+    action: "Adventure , Action , Thriller / Suspense",
+    duration: "1h 41m",
+  },
+  {
+    id: 8,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABamZovbPfOEonEjvZgL0f_B44_JDrRChN7V6Cix_EbxOlBVXpdb7XwxxLJDynywYQc4ylCgI9JR8pZvo7yRNIo8_s3nLfZEUIObn.jpg?r=fb6",
+    title: "Spider-Man: Across the Spider-Verse",
+    action: "Fantasy , Adventure , Action ",
+    duration: "47m",
+  },
+  {
+    id: 9,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABU7bDxBfn2wvl1tYt10FRCwWxypYxJJJLI7M9Pv8yGGtzU8-K3Psd7ML3iiPHvr-u_Qq6e3UxSorVtVmSnAtkayGDINNHAdXxaSF.jpg?r=a43",
+    title: "No Way Up",
+    action: "Adventure , Fantasy , Horror",
+    duration: "2h 26m",
+  },
+  {
+    id: 10,
+    src: "https://occ-0-6661-56.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVmJBbQOxB2gDKMyJfJ5czITrt-HCa08crrM8Sfaa58lJte2of7ZLXnOacmBgetakvcoJcik24IWhXYp8w-HIVUgkch7SXD47FsHVNzhljycrMZELzweCWxqfK5bn5iIop80JQ.jpg?r=dea",
+    title: "Troll",
+    action: "Horror , Action , Adventure",
+    duration: "1h 58m",
+  },
+];

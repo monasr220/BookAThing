@@ -1,0 +1,19 @@
+.swiper-pagination {
+  position: relative;
+  margin-top: 10px;
+}
+
+
+.filmCard {
+    
+    box-shadow: 0 1px 4px #524f4fcd;
+    border: none;
+}
+
+.filmCard img {
+    transform: scale(1);
+    transition: all 0.3s;
+}
+.filmCard img:hover {
+    transform: scale(1.125);
+}
