@@ -1,27 +1,33 @@
 # 🎬 BookAThing - Cinema My Bookings
 
-Branch: `cinema/my-bookings`
+> A modern cinema booking system - My Bookings feature implementation.
 
-This branch contains the frontend implementation for the cinema booking feature.
+### 📌 About This Branch
+**Branch:** `cinema/my-bookings`
+**Focus:** Frontend only - Cinema booking flow & My Bookings page
+**Status:** Clean & Ready for Review
 
-## ✨ Features
-- **My Bookings Page** - View all user bookings
-- **Booking Flow** - Complete flow: Day → Time → Seats → Customer Info → Payment → Confirmation
-- **Components:**
-    - `DaySelector` - Select booking date
-    - `TimeSelector` - Select show time
-    - `SeatSelector` - Interactive seat selection
-    - `CustomerInfo` - Customer details form
-    - `Payment` - Payment step
-    - `MyBookings` - Bookings list
+This branch is part of the main project monasr220/BookAThing - responsible for the complete user journey from selecting a movie to viewing booked tickets.
 
-## 🚀 Tech Stack
-- React + Vite
-- CSS Modules
+### ✨ Features
 
-## 📦 Installation & Run
-```bash
-cd frontend
-npm install
-npm run dev
+| Feature | Description | Component |
+| :--- | :--- | :--- |
+| 📅 Day Selection | Choose movie date with availability | DaySelector.jsx |
+| ⏰ Time Selection | Choose showtime slots | TimeSelector.jsx |
+| 💺 Seat Selection | Interactive seat map | SeatSelector.jsx |
+| 👤 Customer Info | Form for user details | CustomerInfo.jsx |
+| 💳 Payment | Payment summary | Payment.jsx |
+| ✅ Confirmation | Booking confirmation | Confirmation.jsx |
+| 🎟️ My Bookings | List all user bookings | MyBookings.jsx |
+
+### 🚀 Tech Stack
+- Frontend: React 18, Vite, CSS3
+- State Management: React Hooks
+- Build Tool: Vite
+
+### 📦 Installation & Run
+
+1. Clone the branch:
+
 
