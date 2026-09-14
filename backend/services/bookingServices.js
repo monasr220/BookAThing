@@ -120,15 +120,31 @@ class BookingService {
         }
     }
 
-    async cancelBooking(userId, bookingId) {
+    async cancelBooking(userId, bookingId, userRole = 'user', userTheaterId = null) {
         const booking = await Booking.findById(bookingId);
 
         if (!booking) {
             throw { status: 404, message: 'Booking not found.' };
         }
-        if (booking.userId.toString() !== userId) {
+        
+        // Allow admin to cancel any booking
+        if (userRole === 'admin') {
+            // Admin can cancel any booking
+        }
+        // Owner can cancel bookings for their own theater or their own bookings
+        else if (userRole === 'owner') {
+            if (booking.userId.toString() !== userId) {
+                // If not their own booking, check if it's for their theater
+                if (!userTheaterId || booking.theaterId.toString() !== userTheaterId.toString()) {
+                    throw { status: 403, message: 'Not authorized to cancel bookings for other theaters.' };
+                }
+            }
+        }
+        // Regular users can only cancel their own bookings
+        else if (booking.userId.toString() !== userId) {
             throw { status: 403, message: 'Not authorized to cancel this booking.' };
         }
+        
         if (booking.status === 'cancelled') {
             throw { status: 400, message: 'Booking is already cancelled.' };
         }

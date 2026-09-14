@@ -49,9 +49,11 @@ exports.getUserBookings = async (req, res, next) => {
 exports.cancelBooking = async (req, res, next) => {
     try {
         const userId = req.user?.userId || req.user?._id;
+        const userRole = req.user?.role || 'user';
+        const userTheaterId = req.user?.theater_id || null;
         const { bookingId } = req.params;
 
-        const cancelledBooking = await bookingService.cancelBooking(userId, bookingId);
+        const cancelledBooking = await bookingService.cancelBooking(userId, bookingId, userRole, userTheaterId);
 
         res.status(200).json({
             success: true,

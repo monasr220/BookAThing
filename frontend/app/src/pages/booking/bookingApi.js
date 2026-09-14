@@ -46,3 +46,9 @@ export async function processPayment({ bookingId, amount, paymentMethod, currenc
     const response = await api.post('/payments', { bookingId, amount, paymentMethod, currency });
     return unwrap(response); // { id, bookingId, amount, currency, status, paymentMethod, transactionRef, createdAt }
 }
+
+// GET /api/payments/booking/:bookingId
+export async function getPaymentByBooking(bookingId) {
+    const response = await api.get(`/payments/booking/${bookingId}`);
+    return unwrap(response); // payment details
+}
