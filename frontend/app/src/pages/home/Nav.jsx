@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Nav.css";
-import { isLoggedIn, clearSession } from "../../lib/api";
+import { isLoggedIn, clearSession, getCurrentUser } from "../../lib/api";
 
 export default function Nav() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoggedIn(isLoggedIn());
+    setUser(getCurrentUser());
   }, []);
 
   const handleLogout = () => {
     clearSession();
     setLoggedIn(false);
+    setUser(null);
     navigate("/");
   };
 
@@ -71,9 +74,9 @@ export default function Nav() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#coming-soon">
+                  <Link className="nav-link" to="/theaters">
                     Cinemas
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/offers">
@@ -81,15 +84,17 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/theaters">
-                    Theaters
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to="/my-bookings">
                     My Bookings
                   </Link>
                 </li>
+                {(user?.role === 'owner' || user?.role === 'admin') && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/theater">
+                      Theater Dashboard
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
 

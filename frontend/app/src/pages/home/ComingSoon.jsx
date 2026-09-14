@@ -8,18 +8,10 @@ import {
   Navigation,
   Pagination,
 } from "swiper/modules";
-import { ComingSoonData } from "./Data/ComingSoonData";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./ComingSoon.css";
-
-// استبدال صور أي أفلام تحتوي على نساء أو مشاهد غير مناسبة بصور سينمائية محايدة
-const MOVIE_OVERRIDES = {
-  "just play dead": "https://picsum.photos/id/1062/500/750",
-  colony: "https://picsum.photos/id/1015/500/750",
-  "above & below": "https://picsum.photos/id/1043/500/750",
-};
 
 // قائمة استبعاد الأفلام غير المناسبة بالكامل
 const BLOCKED_MOVIES = ["i want your sex"];
@@ -27,8 +19,9 @@ const BLOCKED_MOVIES = ["i want your sex"];
 export default function ComingSoon() {
   // GET /api/movies/coming-soon returns movies with a future releaseDate
   // that don't have any showtimes scheduled yet (see movieService.js).
-  // Falls back to the local static list if the request fails.
-  const [movies, setMovies] = useState(ComingSoonData || []);
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     let cancelled = false;
@@ -46,14 +39,15 @@ export default function ComingSoon() {
           ? data.data
           : Array.isArray(data?.movies)
           ? data.movies
-          : null;
-        // Only switch away from the static fallback if we actually got movies back.
-        if (extracted && extracted.length > 0) {
-          setMovies(extracted);
-        }
+          : [];
+        setMovies(extracted);
+        setLoading(false);
       })
       .catch((err) => {
+        if (cancelled) return;
         console.error("Coming Soon fetch error:", err);
+        setErrorMsg(err.message);
+        setLoading(false);
       });
 
     return () => {
@@ -76,51 +70,62 @@ export default function ComingSoon() {
         Coming Soon
       </h5>
 
-      <Swiper
-        className="swiperRow pb-5"
-        modules={[
-          Navigation,
-          Pagination,
-          Autoplay,
-          Mousewheel,
-          Keyboard,
-          FreeMode,
-        ]}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        mousewheel={{ forceToAxis: true }}
-        freeMode={true}
-        loop={filteredData.length > 5}
-        pagination={{ clickable: true }}
-        slidesPerView={1}
-        spaceBetween={15}
-        slidesPerGroup={1}
-        breakpoints={{
-          640: { slidesPerView: 2, spaceBetween: 20 },
-          768: { slidesPerView: 3, spaceBetween: 20 },
-          1024: { slidesPerView: 4, spaceBetween: 10 },
-          1280: { slidesPerView: 5, spaceBetween: 10 },
-        }}
-        navigation={{
-          nextEl: ".custom-next",
-          prevEl: ".custom-prev",
-        }}
-      >
+      {loading && (
+        <div className="text-light text-center py-4">جاري تحميل الأفلام...</div>
+      )}
+
+      {errorMsg && (
+        <div className="alert alert-danger text-center my-3">
+          فشل الاتصال: {errorMsg}
+        </div>
+      )}
+
+      {!loading && !errorMsg && filteredData.length === 0 && (
+        <div className="alert alert-warning text-center my-3">
+          لا توجد أفلام قادمة حالياً
+        </div>
+      )}
+
+      {!loading && !errorMsg && filteredData.length > 0 && (
+        <Swiper
+          className="swiperRow pb-5"
+          modules={[
+            Navigation,
+            Pagination,
+            Autoplay,
+            Mousewheel,
+            Keyboard,
+            FreeMode,
+          ]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          mousewheel={{ forceToAxis: true }}
+          freeMode={true}
+          loop={filteredData.length > 5}
+          pagination={{ clickable: true }}
+          slidesPerView={1}
+          spaceBetween={15}
+          slidesPerGroup={1}
+          breakpoints={{
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 20 },
+            1024: { slidesPerView: 4, spaceBetween: 10 },
+            1280: { slidesPerView: 5, spaceBetween: 10 },
+          }}
+          navigation={{
+            nextEl: ".custom-next",
+            prevEl: ".custom-prev",
+          }}
+        >
         {filteredData.map((item, index) => {
           const rawPoster = item.poster_url || item.src || item.poster || item.poster_path;
-          const movieTitle = (item.title || "").toLowerCase().trim();
-
           let finalPoster = "";
 
-          // 1. استخدام صورة بديلة محايدة إذا كان الفيلم مسجلاً في التعديلات
-          if (MOVIE_OVERRIDES[movieTitle]) {
-            finalPoster = MOVIE_OVERRIDES[movieTitle];
-          }
-          // 2. ضبط مسار الصورة الأصلي
-          else if (rawPoster && typeof rawPoster === "string") {
+          // Use the TMDB poster_url from database
+          if (rawPoster && typeof rawPoster === "string") {
             if (
               rawPoster.startsWith("http://") ||
               rawPoster.startsWith("https://")
@@ -191,6 +196,7 @@ export default function ComingSoon() {
           </button>
         </div>
       </Swiper>
+      )}
     </div>
   );
 }

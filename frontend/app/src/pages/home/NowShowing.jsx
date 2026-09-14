@@ -13,13 +13,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./NowShowing.css";
 
-// استبدال الصور للأفلام التي نحتاج تغيير صورها فقط
-const MOVIE_OVERRIDES = {
-  colony: "https://picsum.photos/id/1015/500/750",
-  "above & below": "https://picsum.photos/id/1043/500/750",
-  "just play dead": "https://picsum.photos/id/1062/500/750", // صورة سينمائية معبرة
-};
-
 // قائمة عناوين الأفلام المراد إخفاؤها واستبعادها تماماً
 const BLOCKED_MOVIES = ["i want your sex"];
 
@@ -127,17 +120,13 @@ export default function NowShowing() {
           }}
         >
           {movies.map((item, index) => {
-            const rawPoster = item.poster || item.posterUrl || item.poster_path;
+            const rawPoster = item.poster_url || item.poster || item.posterUrl || item.poster_path;
             const movieTitle = (item.title || "").toLowerCase().trim();
 
             let finalPoster = "";
 
-            // 1. استخدام الصورة المخصصة للأفلام المحددة
-            if (MOVIE_OVERRIDES[movieTitle]) {
-              finalPoster = MOVIE_OVERRIDES[movieTitle];
-            }
-            // 2. باقي الأفلام تبقى بصورها الأصلية مع ضبط المسار
-            else if (rawPoster && typeof rawPoster === "string") {
+            // Use the TMDB poster_url from database
+            if (rawPoster && typeof rawPoster === "string") {
               if (
                 rawPoster.startsWith("http://") ||
                 rawPoster.startsWith("https://")

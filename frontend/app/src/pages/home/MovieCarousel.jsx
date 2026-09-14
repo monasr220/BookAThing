@@ -95,7 +95,7 @@ export default function MovieCarousel({ title, anchorId, endpoint }) {
           }}
         >
           {movies.map((item, index) => {
-            const rawPoster = item.poster || item.posterUrl || item.poster_path || item.poster_url;
+            const rawPoster = item.poster_url || item.poster || item.posterUrl || item.poster_path;
             let finalPoster = "";
 
             if (rawPoster && typeof rawPoster === "string") {
