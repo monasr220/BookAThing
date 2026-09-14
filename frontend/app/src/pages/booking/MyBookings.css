@@ -27,6 +27,22 @@
     color: #ffe96f;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.test-mode-badge {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
 .loading-state,
 .empty-state,
 .error-message {
