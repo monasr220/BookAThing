@@ -19,7 +19,7 @@ const bookingSchema = new mongoose.Schema({
     },
     showtimeId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Showtime',
+        ref: 'movie_screening',
         required: [true, 'Showtime ID is required']
     },
     seats: {

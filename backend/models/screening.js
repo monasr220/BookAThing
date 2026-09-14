@@ -14,7 +14,7 @@ const screeningSchema = new mongoose.Schema({
     movie_id: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'movies',
+        ref: 'Movie',
     },
     start_time: {
         type: Date,

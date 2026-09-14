@@ -61,6 +61,13 @@ api.interceptors.response.use(
         const originalRequest = error.config;
         const status = error.response?.status;
 
+        // Handle 403 Forbidden (invalid token) - clear session immediately
+        if (status === 403 && error.response?.data?.message?.includes('Invalid token')) {
+            clearSession();
+            window.location.href = '/auth';
+            return Promise.reject(error);
+        }
+
         if (status !== 401 || originalRequest._retry || originalRequest.url?.includes('/auth/')) {
             return Promise.reject(error);
         }
