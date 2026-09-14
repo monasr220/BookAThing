@@ -1,0 +1,15 @@
+.footIcon {
+    color : #b6b3b3;
+    cursor: pointer;
+}
+.footIcon:hover {
+    color : #fff;
+}
+
+.footerIcons2 {
+    color : #edc278df;
+    cursor: pointer;
+}
+.footerIcons2:hover {
+    color : #fff;
+}       
