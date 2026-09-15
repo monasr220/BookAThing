@@ -1,0 +1,55 @@
+.booking-container { max-width: 100%; margin: 0 auto; background: #111; padding: 12px; border-radius: 16px; color: white; border: 1px solid #222; box-sizing: border-box; }
+.progress-bar { display: flex; gap: 6px; margin-bottom: 15px; }
+.progress-step { flex: 1; height: 4px; border-radius: 10px; background: #333; transition: all 0.3s ease; }
+.progress-step.active { background: #E2C078; }
+.movie-title { color: #E2C078; }
+.label { font-size: 12px; color: #888; margin-bottom: 6px; margin-top: 12px; }
+.days-grid { display: flex; gap: 5px; margin-bottom: 12px; }
+.day-card { flex: 1; padding: 8px 2px; border-radius: 12px; text-align: center; border: 1px solid #333; background: #1A1A1A; font-size: 10px; cursor: pointer; color: white; transition: all 0.3s ease; }
+.day-card.selected { border: 2px solid #E2C078; background: #1e1a0a; color: #E2C078; transform: scale(1.05); }
+
+.times-grid { display: flex; gap: 5px; margin-bottom: 12px; flex-wrap: wrap; }
+.time-card { padding: 6px 12px; border-radius: 20px; border: 1px solid #333; background: #1A1A1A; font-size: 11px; cursor: pointer; transition: all 0.3s ease; }
+.time-card.selected { border-color: #E2C078; background: #E2C078; color: #111; font-weight: bold; }
+
+.seats-wrapper { margin: 15px 0; background: #0a0a0a; padding: 10px; border-radius: 10px; }
+.seat-row { display: flex; gap: 6px; margin-bottom: 6px; align-items: center; justify-content: center; }
+.row-label { width: 20px; color: #888; font-size: 11px; }
+.seat { width: 36px; height: 36px; border-radius: 6px 6px 2px 2px; background: #222; display: flex; align-items: center; justify-content: center; font-size: 11px; cursor: pointer; border: 1px solid #333; transition: all 0.2s ease; }
+.seat:hover { border-color: #E2C078; }
+.seat.selected { background: #E2C078; color: #111; border-color: #E2C078; transform: scale(1.1); }
+.seat.booked { background: #333; color: #666; cursor: not-allowed; opacity: 0.4; }
+
+.input-field { width: 100%; padding: 10px; border-radius: 8px; background: #1A1A1A; border: 1px solid #333; color: white; margin-bottom: 10px; box-sizing: border-box; }
+.input-field.dark { background: #000; border-color: #E2C078; }
+
+.btn-primary { width: 100%; padding: 12px; border-radius: 10px; background: #E2C078; color: #111; border: none; font-weight: bold; cursor: pointer; margin-top: 10px; }
+.btn-primary.disabled { background: #333; color: #777; cursor: not-allowed; }
+.btn-secondary { padding: 12px 20px; border-radius: 10px; background: #222; color: white; border: 1px solid #333; cursor: pointer; }
+.flex2 { flex: 2; }
+.actions { display: flex; gap: 8px; margin-top: 10px; }
+
+.pay-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.pay-card { padding: 12px; border-radius: 10px; background: #1A1A1A; border: 1px solid #333; text-align: center; cursor: pointer; transition: all 0.2s ease; }
+.pay-card.selected { border-color: #E2C078; background: #1e1a0a; color: #E2C078; }
+
+.box-dashed { border: 1px dashed #E2C078; padding: 12px; border-radius: 10px; background: #1e1a0a; margin-bottom: 12px; text-align: center; }
+.wallet-number { font-size: 18px; font-weight: bold; color: #E2C078; margin: 8px 0; }
+.small-label { font-size: 11px; color: #888; }
+.summary-box { background: #1A1A1A; padding: 10px; border-radius: 8px; font-size: 12px; color: #aaa; margin-top: 10px; text-align: center; }
+
+.success-wrapper { text-align: center; padding: 20px; }
+.success-icon { font-size: 50px; }
+.success-title { color: #E2C078; }
+.ticket-card { background: #1A1A1A; border: 1px solid #333; border-radius: 12px; padding: 15px; margin-top: 15px; text-align: left; }
+.ticket-movie { color: #E2C078; text-align: center; }
+.ticket-rows { font-size: 13px; }
+.ticket-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.divider { border-top: 1px dashed #333; margin: 10px 0; }
+.error-text { color: #ff4d4d; font-size: 11px; margin-top: -8px; margin-bottom: 8px; display: block; }
+
+@media (max-width: 600px) {
+  .days-grid, .times-grid { gap: 4px; }
+  .seat { width: 30px; height: 30px; font-size: 10px; }
+  .pay-grid { grid-template-columns: 1fr; }
+}
