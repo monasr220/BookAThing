@@ -243,7 +243,7 @@ npm run dev
 
 | الأداة | الاستخدام |
 |---|---|
-| **Claude** |backend debugging and improve the code|
+| **Claude** |backend debugging and improve the code script.sh|
 | **ChatGPT** |frontend debugging and test its component |
 | **Gemini** |improve search and TMDB API to get data | 
 | **Manus** |documention and presention | 
