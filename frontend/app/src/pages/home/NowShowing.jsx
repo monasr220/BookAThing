@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./NowShowing.css";
 
-// قائمة عناوين الأفلام المراد إخفاؤها واستبعادها تماماً
+//  قائمة عناوين الأفلام المراد إخفاؤها واستبعادها نهائيا
 const BLOCKED_MOVIES = ["i want your sex"];
 
 export default function NowShowing() {
@@ -56,7 +56,7 @@ export default function NowShowing() {
       })
       .then((extractedMovies) => {
 
-        // فلترة وإخفاء الأفلام الغير مرغوب فيها تماماً
+        // فلترة وإخفاء الأفلام الغير مرغوب فيها 
         const filteredMovies = extractedMovies.filter((movie) => {
           const title = (movie.title || "").toLowerCase().trim();
           return !BLOCKED_MOVIES.includes(title);
