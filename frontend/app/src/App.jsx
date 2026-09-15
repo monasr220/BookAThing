@@ -9,6 +9,7 @@ const Receipt = lazy(() => import('./pages/booking/Receipt'));
 const SearchResults = lazy(() => import('./pages/home/SearchResults'));
 const TheatersBrowse = lazy(() => import('./pages/home/TheatersBrowse'));
 const TheaterDetail = lazy(() => import('./pages/home/TheaterDetail'));
+const BrowseAllMovies = lazy(() => import('./pages/home/BrowseAllMovies'));
 const MyBookings = lazy(() => import('./pages/booking/MyBookings'));
 // لوحة تحكم أصحاب السينمات بتدير التنقل الداخلي بتاعها لوحدها
 const TheaterApp = lazy(() => import('./pages/theater/TheaterApp'));
@@ -24,6 +25,7 @@ function App() {
           <Route path="/search" element={<SearchResults />} />
           <Route path="/theaters" element={<TheatersBrowse />} />
           <Route path="/theaters/:theaterId" element={<TheaterDetail />} />
+          <Route path="/movies" element={<BrowseAllMovies />} />
           <Route path="/movie/:id" element={<MovieBooking />} />
           <Route path="/receipt/:bookingId" element={<Receipt />} />
           <Route path="/my-bookings" element={<MyBookings />} />

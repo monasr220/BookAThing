@@ -69,9 +69,9 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#now-showing">
+                  <Link className="nav-link" to="/movies">
                     Movies
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/theaters">
