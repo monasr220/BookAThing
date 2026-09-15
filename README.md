@@ -243,11 +243,11 @@ npm run dev
 
 | الأداة | الاستخدام |
 |---|---|
-| **Claude** |
-| **ChatGPT** |
-| **Gemini** |
-| **Manus** |
-| **Devin** |
+| **Claude** |backend debugging and improve the code|
+| **ChatGPT** |frontend debugging and test its component |
+| **Gemini** |improve search and TMDB API to get data | 
+| **Manus** |documention and presention | 
+| **Devin** | improve the archeticture of the project |
 
 > **ملاحظة:** تم استخدام هذه الأدوات كمساعد فني أثناء التطوير، وتمت مراجعة جميع الأكواد الناتجة يدويًا من قبل فريق العمل قبل اعتمادها ضمن المشروع.
 ---
