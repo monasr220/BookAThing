@@ -478,6 +478,22 @@ Authorization: Bearer <accessToken>
 | GET | `/upcoming-showtimes` | مالك الدار / Admin | مواعيد العرض القادمة |
 
 ---
+## 👥 Team Members and Contributions
+
+
+| Team Member | Contribution |
+| :--- | :--- |
+|  احمد محمد احمد حسن السيد | Theater Owner and Admin Dashboard |
+| انس وائل حسينى محمود يوسف كيلانى | Booking & payment |
+| احمد محمود محمود محمد سليمان عليوه | offers |
+| فادى اشرف جميل فرج متولى |  my bookings |
+| محمد سعد رمضان الحسينى |   Home |
+| سيف عمرو رفاعى مصطفى عيسوى | AuthForm |
+| محمد نصر ابراهيم الدسوقى عبده منصور | BackEnd |
+| احمد مصطفى عبدالله عبد العزيز درويش | ReviewPage |
+| محمود محمد عبده محمد عبده صويره | BackEnd(Seats) |
+
+---
 
 # 🖥️ Frontend Routes
 
