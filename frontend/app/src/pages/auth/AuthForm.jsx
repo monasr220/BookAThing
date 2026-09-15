@@ -9,7 +9,7 @@ import { validateAuthForm } from './utils/validation';
 const AuthForm = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    // من فين جاي المستخدم ولازم يرجعله بعد ما يخلص تسجيل دخول (افتراضياً صفحة الهوم)
+    // فتح صفحة الاساسيه افتراضيا بعد تسجيل الدخول (home)
     const redirectTo = searchParams.get('redirect') || '/';
 
     const [isLogin, setIsLogin] = useState(true);
@@ -70,7 +70,7 @@ const AuthForm = () => {
                     email: formData.email,
                     password: formData.password
                 });
-                // نفس الـ origin دلوقتي، فالتوكن اتخزن في localStorage وبقى شغال في كل الموقع
+                // تخزين التوكن في Localstorage
                 navigate(redirectTo);
             } else {
                 setOtpFlow('signup');
